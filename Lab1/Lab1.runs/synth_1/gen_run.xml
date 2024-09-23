@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7k325tffg676-2L" LaunchTime="1727076434">
+  <File Type="PA-TCL" Name="top.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="top_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="top_reports.tcl"/>
+  <File Type="RDS-RDS" Name="top.vds"/>
+  <File Type="RDS-UTIL" Name="top_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="top_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="top.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="top_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="top_timing_summary_synth.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/ALU.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/ALU.v"/>
+        <Attr Name="ImportTime" Val="1725539912"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/Code2Inst.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/Code2Inst.v"/>
+        <Attr Name="ImportTime" Val="1695700714"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/CtrlUnit.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/CtrlUnit.v"/>
+        <Attr Name="ImportTime" Val="1725539394"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/Font816.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/Font816.v"/>
+        <Attr Name="ImportTime" Val="1630067838"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/HazardDetectionUnit.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/HazardDetectionUnit.v"/>
+        <Attr Name="ImportTime" Val="1725541354"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/ImmGen.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/ImmGen.v"/>
+        <Attr Name="ImportTime" Val="1630067358"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/common/MUX2T1_32.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/common/MUX2T1_32.v"/>
+        <Attr Name="ImportTime" Val="1725540100"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/common/MUX4T1_32.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/common/MUX4T1_32.v"/>
+        <Attr Name="ImportTime" Val="1725540104"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/fix/RAM_B.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/fix/RAM_B.v"/>
+        <Attr Name="ImportTime" Val="1725541634"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/common/REG32.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/common/REG32.v"/>
+        <Attr Name="ImportTime" Val="1725540110"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/REG_EX_MEM.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/REG_EX_MEM.v"/>
+        <Attr Name="ImportTime" Val="1725539542"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/REG_ID_EX.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/REG_ID_EX.v"/>
+        <Attr Name="ImportTime" Val="1725539900"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/REG_IF_ID.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/REG_IF_ID.v"/>
+        <Attr Name="ImportTime" Val="1725539552"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/REG_MEM_WB.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/REG_MEM_WB.v"/>
+        <Attr Name="ImportTime" Val="1725539664"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/fix/ROM_D.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/fix/ROM_D.v"/>
+        <Attr Name="ImportTime" Val="1725541638"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/RV32core.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/RV32core.v"/>
+        <Attr Name="ImportTime" Val="1725541260"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/core/Regs.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/core/Regs.v"/>
+        <Attr Name="ImportTime" Val="1725539676"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/VGATEST.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/VGATEST.v"/>
+        <Attr Name="ImportTime" Val="1630069726"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/common/add_32.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/common/add_32.v"/>
+        <Attr Name="ImportTime" Val="1725540094"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/auxillary/function.vh">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/function.vh"/>
+        <Attr Name="ImportTime" Val="1505915250"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="IsVisible" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/btn_scan.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/btn_scan.v"/>
+        <Attr Name="ImportTime" Val="1628266824"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/clk_diff.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/clk_diff.v"/>
+        <Attr Name="ImportTime" Val="1628263350"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/common/cmp_32.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/common/cmp_32.v"/>
+        <Attr Name="ImportTime" Val="1725540076"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/display.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/display.v"/>
+        <Attr Name="ImportTime" Val="1628266858"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/fix/fix.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/fix/fix.v"/>
+        <Attr Name="ImportTime" Val="1717850282"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/my_clk_gen.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/my_clk_gen.v"/>
+        <Attr Name="ImportTime" Val="1628262896"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/parallel2serial.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/parallel2serial.v"/>
+        <Attr Name="ImportTime" Val="1628266828"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/vga.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/vga.v"/>
+        <Attr Name="ImportTime" Val="1616728990"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/top.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/top.v"/>
+        <Attr Name="ImportTime" Val="1629990950"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/debug_clk.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/debug_clk.v"/>
+        <Attr Name="ImportTime" Val="1628262876"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/design_sources/auxillary/CPUTEST.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/design_sources/auxillary/CPUTEST.v"/>
+        <Attr Name="ImportTime" Val="1628647838"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="top"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/constraint_sources/constraint.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../ArchLab1/Lab1/constraint_sources/constraint.xdc"/>
+        <Attr Name="ImportTime" Val="1628268592"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

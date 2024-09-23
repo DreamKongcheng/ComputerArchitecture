@@ -1,0 +1,27 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../Lab1.srcs/sources_1/imports/auxillary" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/ALU.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/CtrlUnit.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/HazardDetectionUnit.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/ImmGen.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/common/MUX2T1_32.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/common/MUX4T1_32.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/fix/RAM_B.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/common/REG32.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/REG_EX_MEM.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/REG_ID_EX.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/REG_IF_ID.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/REG_MEM_WB.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/fix/ROM_D.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/RV32core.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/core/Regs.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/common/add_32.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/common/cmp_32.v" \
+"../../../../Lab1.srcs/sources_1/imports/design_sources/fix/fix.v" \
+"../../../../Lab1.srcs/sim_1/imports/simulation_sources/core_sim.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
