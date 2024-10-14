@@ -133,7 +133,7 @@ module  RV32core(
         .csr_rw_EX(csr_rw_EXE),.csr_w_imm_mux_EX(csr_w_imm_mux_EXE),.mret_EX(mret_EXE),
         .exp_vector_EX(exp_vector_EXE));
     
-    MUX2T1_32 mux_A_EXE(.I0(rs1_data_EXE),.I1(PC_EXE),.s(ALUSrc_A_EXE),.o(ALUA_EXE));
+    MUX2T1_32 mux_A_EXE(.I0(rs1_data_EXE),.I1(PC_EXE),.s(ALUSrc_A_EXE),.o(ALUA_EXE)); //ALUA
 
     MUX2T1_32 mux_B_EXE(.I0(rs2_data_EXE),.I1(Imm_EXE),.s(ALUSrc_B_EXE),.o(ALUB_EXE));
 
@@ -167,7 +167,7 @@ module  RV32core(
         .csr_r_data_out(CSRout_MEM),
 
         .interrupt(interrupter),
-        .illegal_inst(~isFlushed_WB & exp_vector_WB[3]),
+        .illegal_inst(~isFlushed_WB & exp_vector_WB[3]),  //自定mode所代表的类型
         .ecall_m(~isFlushed_WB & exp_vector_WB[2]),
         .l_access_fault(~isFlushed_WB & exp_vector_WB[1]),
         .s_access_fault(~isFlushed_WB & exp_vector_WB[0]),
