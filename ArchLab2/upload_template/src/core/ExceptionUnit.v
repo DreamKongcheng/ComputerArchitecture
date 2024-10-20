@@ -54,7 +54,11 @@ module ExceptionUnit(
     wire [3:0] exception_index;
 
     //assign exception_index = TO_BE_FILLED; //请查阅RV32I手册，确定mcause中illegal_inst，l_access_fault，s_access_fault和ecall_m的编码，另外注意interrupt和exception的关系
-    assign exception_index = illegal_inst && 4'b0010 | l_access_fault && 4'b0101 | s_access_fault && 4'b0111 | ecall_m && 4'b1011;
+    assign exception_index = {4{illegal_inst}} & 4'b0010 | 
+                             {4{l_access_fault}} & 4'b0101 | 
+                             {4{s_access_fault}} & 4'b0111 | 
+                             {4{ecall_m}} & 4'b1011;
+
     assign enable_exception = mstatus[3]; //MIE
 
     //assign interrupt_or_exception = TO_BE_FILLED;

@@ -83,12 +83,18 @@ module CtrlUnit(
     wire JAL  =  opcode == 7'b1101111;
     assign JALR = (opcode == 7'b1100111) && funct3_0;
 
-    wire CSRRW = TO_BE_FILLED;
-    wire CSRRS = TO_BE_FILLED;
-    wire CSRRC = TO_BE_FILLED;
-    wire CSRRWI = TO_BE_FILLED;
-    wire CSRRSI = TO_BE_FILLED;
-    wire CSRRCI = TO_BE_FILLED;
+    // wire CSRRW = TO_BE_FILLED;
+    // wire CSRRS = TO_BE_FILLED;
+    // wire CSRRC = TO_BE_FILLED;
+    // wire CSRRWI = TO_BE_FILLED;
+    // wire CSRRSI = TO_BE_FILLED;
+    // wire CSRRCI = TO_BE_FILLED;
+    wire CSRRW = CSRop & funct3_1;
+    wire CSRRS = CSRop & funct3_2;
+    wire CSRRC = CSRop & funct3_3;
+    wire CSRRWI = CSRop & funct3_5;
+    wire CSRRSI = CSRop & funct3_6;
+    wire CSRRCI = CSRop & funct3_7;
 
     assign MRET = inst == 32'b0011000_00010_00000_000_00000_1110011;
     wire ECALL = inst == 32'b0111_0011;
@@ -179,11 +185,12 @@ module CtrlUnit(
     
     assign csr_rw = CSR_valid;
 
-    assign csr_w_imm_mux = CSRRWI | CSRRSI | CSRRCI ;
+    assign csr_w_imm_mux = CSRRWI | CSRRSI | CSRRCI ; //选择立即数
 
     wire illegal_inst = ~(R_valid | I_valid | B_valid | JAL | JALR | L_valid | S_valid |
         LUI | AUIPC | CSR_valid | MRET | ECALL);
     
-    assign exp_vector = TO_BE_FILLED;
+    //assign exp_vector = TO_BE_FILLED;  //2bit
+    assign exp_vector = {illegal_inst, ECALL};
 
 endmodule

@@ -2,17 +2,17 @@
 
 module CSRRegs(
     input clk, rst,
-    input[11:0] raddr, waddr,
+    input[11:0] raddr, waddr,  //raddr就是6个特权指令的前12位   waddr也是
     input[31:0] wdata,
     input csr_w,
-    input[1:0] csr_wsc_mode,
-    output[31:0] rdata,
+    input[1:0] csr_wsc_mode, //write/set/clear
+    output[31:0] rdata,  //读出的数据
     output[31:0] mstatus,
     output[31:0] mtvec,
-    output[31:0] mepc,
+    output[31:0] mepc,  //指向恢复位置
     output[31:0] mie,
     input interrupt,
-    input[31:0] mepc_w,
+    input[31:0] mepc_w,  //外面传进来的PC
     input[31:0] mcause_w,
     input[31:0] mtval_w,
     input mret,
@@ -28,7 +28,7 @@ module CSRRegs(
     wire[3:0] raddr_map = (raddr[6] << 3) + raddr[2:0];
     wire waddr_valid = waddr[11:7] == 5'h6 && waddr[5:3] == 3'h0;
     
-    assign waddr_map = (waddr[6] << 3) + waddr[2:0];
+    assign waddr_map = (waddr[6] << 3) + waddr[2:0];  //就是4位寄存器地址  服务于那六条修改CSR的指令
 
     assign mstatus = CSR[0];
     assign mepc = CSR[9];
@@ -56,21 +56,22 @@ module CSRRegs(
 			CSR[15] <= 0;
 		end
         else if(interrupt) begin
-            CSR[0][7] <= TO_BE_FILLED;
-            CSR[0][3] <= 0;
-            CSR[9] <= TO_BE_FILLED;
-            CSR[10] <= TO_BE_FILLED;
-            CSR[11] <= TO_BE_FILLED;
+            CSR[0][7] <= CSR[0][3];  //TO_BE_FILLED  //MPIE存上次的MIE
+            CSR[0][3] <= 0;  //MIE设为0
+            CSR[9] <= mepc_w;      //TO_BE_FILLED;   ?????
+            CSR[10] <= mcause_w;  //TO_BE_FILLED;    ?????
+            CSR[11] <= mtval_w; //TO_BE_FILLED;
         end
         else if(mret) begin
-            CSR[0][3] <= TO_BE_FILLED;
-            CSR[0][7] <= 1;
+            CSR[0][3] <= CSR[0][7];  //TO_BE_FILLED;  //MIE设置成MPIE
+            CSR[0][7] <= 1;  //MPIE
+            //mepc
         end
         else if(csr_w) begin
             case(csr_wsc_mode)
-                2'b01: CSR[waddr_map] <= TO_BE_FILLED;
-                2'b10: CSR[waddr_map] <= TO_BE_FILLED;
-                2'b11: CSR[waddr_map] <= TO_BE_FILLED;
+                2'b01: CSR[waddr_map] <= wdata; //TO_BE_FILLED;
+                2'b10: CSR[waddr_map] <= CSR[waddr_map] | wdata; //TO_BE_FILLED;
+                2'b11: CSR[waddr_map] <= CSR[waddr_map] & ~wdata;  //TO_BE_FILLED;
                 default: CSR[waddr_map] <= wdata;
             endcase            
         end

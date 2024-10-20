@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Mon Sep 23 15:33:40 2024
+| Date         : Mon Sep 30 14:26:33 2024
 | Host         : YangZhengyu-Portable running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -23,17 +23,23 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 646
-+-----------+----------+--------------------------------+------------+
-| Rule      | Severity | Description                    | Violations |
-+-----------+----------+--------------------------------+------------+
-| LUTAR-1   | Warning  | LUT drives async reset alert   | 20         |
-| TIMING-20 | Warning  | Non-clocked latch              | 625        |
-| LATCH-1   | Advisory | Existing latches in the design | 1          |
-+-----------+----------+--------------------------------+------------+
+             Violations found: 647
++-----------+------------------+--------------------------------+------------+
+| Rule      | Severity         | Description                    | Violations |
++-----------+------------------+--------------------------------+------------+
+| TIMING-14 | Critical Warning | LUT on the clock tree          | 1          |
+| LUTAR-1   | Warning          | LUT drives async reset alert   | 20         |
+| TIMING-20 | Warning          | Non-clocked latch              | 625        |
+| LATCH-1   | Advisory         | Existing latches in the design | 1          |
++-----------+------------------+--------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+TIMING-14#1 Critical Warning
+LUT on the clock tree  
+The LUT BTN_SCAN/IR_ID[30]_i_11 has been found on the clock tree. Run opt_design to optimize the clock trees, then re-run report_methodology. If LUT(s) are still present in the clock trees, modify the RTL or the synthesis options accordingly to move the clock gating logic to dedicated clock enable resources. Keep in mind that post-opt_design database cannot be used for pin-planning tasks
+Related violations: <none>
+
 LUTAR-1#1 Warning
 LUT drives async reset alert  
 LUT cell vga/c2i1/i___16, with 2 or more inputs, drives asynchronous preset/clear pin(s) vga/c2i1/inst_reg[114]/CLR, vga/c2i1/inst_reg[36]/CLR,

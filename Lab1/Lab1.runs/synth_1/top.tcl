@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7k325tffg676-2L
 
@@ -108,8 +109,8 @@ read_verilog -library xil_defaultlib {
   E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/btn_scan.v
   E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/clk_diff.v
   E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/common/cmp_32.v
+  E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/debug_clk.v
   E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/display.v
-  E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/fix/fix.v
   E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/my_clk_gen.v
   E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/parallel2serial.v
   E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/vga.v
@@ -128,6 +129,8 @@ read_xdc E:/Arch/Lab1/Lab1.srcs/constrs_1/imports/constraint_sources/constraint.
 set_property used_in_implementation false [get_files E:/Arch/Lab1/Lab1.srcs/constrs_1/imports/constraint_sources/constraint.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental E:/Arch/Lab1/Lab1.srcs/utils_1/imports/synth_1/top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

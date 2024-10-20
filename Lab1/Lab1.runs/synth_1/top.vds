@@ -2,8 +2,8 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Mon Sep 23 15:27:19 2024
-# Process ID: 18512
+# Start of session at: Mon Sep 30 14:20:32 2024
+# Process ID: 5068
 # Current directory: E:/Arch/Lab1/Lab1.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: E:/Arch/Lab1/Lab1.runs/synth_1/top.vds
@@ -11,15 +11,20 @@
 # Running On: YangZhengyu-Portable, OS: Windows, CPU Frequency: 2496 MHz, CPU Physical cores: 4, Host memory: 16910 MB
 #-----------------------------------------------------------
 source top.tcl -notrace
-create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:10 . Memory (MB): peak = 382.555 ; gain = 44.656
+create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 382.398 ; gain = 63.137
+Command: read_checkpoint -auto_incremental -incremental E:/Arch/Lab1/Lab1.srcs/utils_1/imports/synth_1/top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from E:/Arch/Lab1/Lab1.srcs/utils_1/imports/synth_1/top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top top -part xc7k325tffg676-2L
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7k325t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k325t'
 INFO: [Device 21-403] Loading part xc7k325tffg676-2L
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 26428
+INFO: [Synth 8-7075] Helper process launched with PID 5968
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [D:/vivado2022_2/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 INFO: [Synth 8-11241] undeclared symbol 'clkout0', assumed default net type 'wire' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/my_clk_gen.v:137]
 INFO: [Synth 8-11241] undeclared symbol 'clkout1', assumed default net type 'wire' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/my_clk_gen.v:139]
@@ -27,7 +32,7 @@ INFO: [Synth 8-11241] undeclared symbol 'clkout2', assumed default net type 'wir
 INFO: [Synth 8-11241] undeclared symbol 'clkout3', assumed default net type 'wire' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/my_clk_gen.v:143]
 WARNING: [Synth 8-6901] identifier 'DATA_BITS' is used before its declaration [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/parallel2serial.v:10]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1250.020 ; gain = 407.738
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 1255.301 ; gain = 410.043
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/top.v:8]
 INFO: [Synth 8-6157] synthesizing module 'clk_diff' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/clk_diff.v:7]
@@ -91,8 +96,8 @@ INFO: [Synth 8-155] case statement is not full and has no default [E:/Arch/Lab1/
 INFO: [Synth 8-6155] done synthesizing module 'parallel2serial__parameterized0' (0#1) [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/parallel2serial.v:7]
 INFO: [Synth 8-6155] done synthesizing module 'display' (0#1) [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/display.v:7]
 INFO: [Synth 8-6157] synthesizing module 'RV32core' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/core/RV32core.v:4]
-INFO: [Synth 8-6157] synthesizing module 'debug_clk' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/fix/fix.v:50]
-INFO: [Synth 8-6155] done synthesizing module 'debug_clk' (0#1) [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/fix/fix.v:50]
+INFO: [Synth 8-6157] synthesizing module 'debug_clk' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/debug_clk.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'debug_clk' (0#1) [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/debug_clk.v:3]
 INFO: [Synth 8-6157] synthesizing module 'REG32' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/common/REG32.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'REG32' (0#1) [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/common/REG32.v:3]
 INFO: [Synth 8-6157] synthesizing module 'add_32' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/common/add_32.v:3]
@@ -282,8 +287,6 @@ WARNING: [Synth 8-7129] Port inst[10] in module CtrlUnit is either unconnected o
 WARNING: [Synth 8-7129] Port inst[9] in module CtrlUnit is either unconnected or has no load
 WARNING: [Synth 8-7129] Port inst[8] in module CtrlUnit is either unconnected or has no load
 WARNING: [Synth 8-7129] Port inst[7] in module CtrlUnit is either unconnected or has no load
-WARNING: [Synth 8-7129] Port debug_en in module debug_clk is either unconnected or has no load
-WARNING: [Synth 8-7129] Port debug_step in module debug_clk is either unconnected or has no load
 WARNING: [Synth 8-7129] Port debug_addr[6] in module RV32core is either unconnected or has no load
 WARNING: [Synth 8-7129] Port interrupter in module RV32core is either unconnected or has no load
 WARNING: [Synth 8-7129] Port SW[11] in module top is either unconnected or has no load
@@ -291,18 +294,18 @@ WARNING: [Synth 8-7129] Port SW[10] in module top is either unconnected or has n
 WARNING: [Synth 8-7129] Port SW[9] in module top is either unconnected or has no load
 WARNING: [Synth 8-7129] Port SW[8] in module top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:27 . Memory (MB): peak = 1376.629 ; gain = 534.348
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1382.980 ; gain = 537.723
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:27 . Memory (MB): peak = 1376.629 ; gain = 534.348
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1382.980 ; gain = 537.723
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:27 . Memory (MB): peak = 1376.629 ; gain = 534.348
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1382.980 ; gain = 537.723
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.195 . Memory (MB): peak = 1376.629 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.184 . Memory (MB): peak = 1382.980 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -316,29 +319,31 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl
 INFO: [Timing 38-2] Deriving generated clocks
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1458.227 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1471.805 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 2 instances were transformed.
   IBUFGDS => IBUFDS: 1 instance 
   RAMB16_S1 => RAMB18E1: 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 1458.227 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1471.805 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [D:/vivado2022_2/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:41 . Memory (MB): peak = 1458.227 ; gain = 615.945
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:23 . Memory (MB): peak = 1471.805 ; gain = 626.547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7k325tffg676-2L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:41 . Memory (MB): peak = 1458.227 ; gain = 615.945
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:23 . Memory (MB): peak = 1471.805 ; gain = 626.547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:41 . Memory (MB): peak = 1458.227 ; gain = 615.945
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:23 . Memory (MB): peak = 1471.805 ; gain = 626.547
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'btn_x_reg' in module 'btn_scan'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'parallel2serial'
@@ -375,7 +380,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'parallel2serial__parameterized0'
 WARNING: [Synth 8-327] inferring latch for variable 'inst_reg' [E:/Arch/Lab1/Lab1.srcs/sources_1/imports/design_sources/auxillary/Code2Inst.v:30]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:48 . Memory (MB): peak = 1458.227 ; gain = 615.945
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:30 . Memory (MB): peak = 1471.805 ; gain = 626.547
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -446,7 +451,7 @@ Detailed RTL Component Info :
 	   3 Input    2 Bit        Muxes := 6     
 	   4 Input    2 Bit        Muxes := 8     
 	   2 Input    2 Bit        Muxes := 6     
-	   2 Input    1 Bit        Muxes := 42    
+	   2 Input    1 Bit        Muxes := 43    
 	  14 Input    1 Bit        Muxes := 5     
 	   5 Input    1 Bit        Muxes := 2     
 	   6 Input    1 Bit        Muxes := 5     
@@ -473,7 +478,7 @@ WARNING: [Synth 8-7129] Port SW[9] in module top is either unconnected or has no
 WARNING: [Synth 8-7129] Port SW[8] in module top is either unconnected or has no load
 WARNING: [Synth 8-3332] Sequential element (inst_reg[151]) is unused and will be removed from module Code2Inst.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:01:40 . Memory (MB): peak = 1665.348 ; gain = 823.066
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:01:17 . Memory (MB): peak = 1658.789 ; gain = 813.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -503,13 +508,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:01:47 . Memory (MB): peak = 1665.348 ; gain = 823.066
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:01:24 . Memory (MB): peak = 1658.789 ; gain = 813.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:01:52 . Memory (MB): peak = 1665.348 ; gain = 823.066
+Finished Timing Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:01:28 . Memory (MB): peak = 1658.789 ; gain = 813.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -529,7 +534,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:33 ; elapsed = 00:01:59 . Memory (MB): peak = 1665.348 ; gain = 823.066
+Finished Technology Mapping : Time (s): cpu = 00:00:46 ; elapsed = 00:01:35 . Memory (MB): peak = 1659.211 ; gain = 813.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -547,37 +552,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:02:07 . Memory (MB): peak = 1676.363 ; gain = 834.082
+Finished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:01:42 . Memory (MB): peak = 1671.133 ; gain = 825.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:02:07 . Memory (MB): peak = 1676.363 ; gain = 834.082
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:01:42 . Memory (MB): peak = 1671.133 ; gain = 825.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:02:09 . Memory (MB): peak = 1676.363 ; gain = 834.082
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:01:46 . Memory (MB): peak = 1671.133 ; gain = 825.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:02:09 . Memory (MB): peak = 1676.363 ; gain = 834.082
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:01:46 . Memory (MB): peak = 1671.133 ; gain = 825.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:02:10 . Memory (MB): peak = 1676.363 ; gain = 834.082
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:01:48 . Memory (MB): peak = 1671.133 ; gain = 825.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:02:10 . Memory (MB): peak = 1676.363 ; gain = 834.082
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:01:49 . Memory (MB): peak = 1671.133 ; gain = 825.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -607,11 +612,11 @@ Report Cell Usage:
 +------+-----------+------+
 |      |Cell       |Count |
 +------+-----------+------+
-|1     |BUFG       |    10|
+|1     |BUFG       |    11|
 |2     |CARRY4     |    74|
 |3     |LUT1       |    18|
 |4     |LUT2       |   445|
-|5     |LUT3       |   792|
+|5     |LUT3       |   793|
 |6     |LUT4       |   660|
 |7     |LUT5       |  1218|
 |8     |LUT6       |  7528|
@@ -633,18 +638,18 @@ Report Cell Usage:
 |24    |OBUF       |    25|
 +------+-----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:02:10 . Memory (MB): peak = 1676.363 ; gain = 834.082
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:01:49 . Memory (MB): peak = 1671.133 ; gain = 825.875
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:02:04 . Memory (MB): peak = 1676.363 ; gain = 752.484
-Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:02:10 . Memory (MB): peak = 1676.363 ; gain = 834.082
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:45 ; elapsed = 00:01:44 . Memory (MB): peak = 1671.133 ; gain = 737.051
+Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:01:49 . Memory (MB): peak = 1671.133 ; gain = 825.875
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.176 . Memory (MB): peak = 1676.363 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.474 . Memory (MB): peak = 1671.133 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 1900 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1676.363 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1671.133 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 634 instances were transformed.
   IBUFGDS => IBUFDS: 1 instance 
@@ -655,11 +660,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   RAM32X1D => RAM32X1D (RAMD32(x2)): 2 instances
   RAMB16_S1 => RAMB18E1: 1 instance 
 
-Synth Design complete, checksum: b829a218
+Synth Design complete, checksum: a2a22a9d
 INFO: [Common 17-83] Releasing license: Synthesis
-106 Infos, 82 Warnings, 0 Critical Warnings and 0 Errors encountered.
+112 Infos, 80 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:02:48 . Memory (MB): peak = 1676.363 ; gain = 1293.809
+synth_design: Time (s): cpu = 00:00:59 ; elapsed = 00:02:21 . Memory (MB): peak = 1671.133 ; gain = 1264.895
 INFO: [Common 17-1381] The checkpoint 'E:/Arch/Lab1/Lab1.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Sep 23 15:30:22 2024...
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 30 14:23:05 2024...
