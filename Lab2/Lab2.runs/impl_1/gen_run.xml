@@ -17,6 +17,7 @@
   <File Type="BITSTR-MMI" Name="top.mmi"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="top_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-SYSDEF" Name="top.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="top_methodology_drc_routed.pb"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="top.ltx"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
@@ -25,8 +26,11 @@
   <File Type="PLACE-IO" Name="top_io_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="top_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="top_utilization_placed.pb"/>
+  <File Type="ROUTE-RQS" Name="top_routed.rqs"/>
   <File Type="PLACE-CTRL" Name="top_control_sets_placed.rpt"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
   <File Type="PLACE-PRE-SIMILARITY" Name="top_incremental_reuse_pre_placed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <File Type="ROUTE-DRC" Name="top_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="top_drc_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="top_power_routed.rpx"/>
@@ -38,7 +42,6 @@
   <File Type="ROUTE-TIMINGSUMMARY" Name="top_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="top_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="top_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="top_incremental_reuse_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="top_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="top_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="top_bus_skew_routed.rpx"/>
@@ -49,7 +52,6 @@
   <File Type="PHYSOPT-DCP" Name="top_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="top_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="top_postroute_physopt_bb.dcp"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="top_methodology_drc_routed.pb"/>
   <File Type="ROUTE-DRC-RPX" Name="top_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="top_methodology_drc_routed.rpx"/>
   <File Type="PDI-FILE" Name="top.pdi"/>
@@ -58,10 +60,7 @@
   <File Type="RNPI_FILE" Name="top.rnpi"/>
   <File Type="NPI_FILE" Name="top.npi"/>
   <File Type="RBD_FILE" Name="top.rbd"/>
-  <File Type="ROUTE-RQS" Name="top_routed.rqs"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="top_postroute_physopted.rqs"/>
-  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/Code/core/ALU.v">
@@ -333,5 +332,6 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

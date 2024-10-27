@@ -157,14 +157,53 @@ assign interrupt_or_exception = interrupt | illegal_inst | l_access_fault | s_ac
 assign mepc_w = interrupt ? epc_next : epc_cur;  //异常时，mepc保存的是异常的指令；中断时，mepc保存的是下一条指令
 ```
 
-
 ## 3. 实验过程和数据记录以及结果分析
+
+### ECALL
+
+PC=38的时候遇到ecall指令，可以看到在PC_WB=38以后，下一周期PC的取值变成78，即进入trap，另外mepc、mstatus、mtvec也都正常赋值
+
+![image-20241020204708982](img/lab2_report/image-20241020204708982.png)
+
+在处理程序的最后会遇到mret，之后pc被重定向到下一条指令继续执行
+
+
+
+### Illeagal
+
+![image-20241020205321458](img/lab2_report/image-20241020205321458.png)
+
+pc=40的时候，exceptUnit拿到信息，然后在下个阶段重定向到trap入口进行操作
+
+同样的，当跑完trap部分遇到94的mret的时候，redirect_mux为1，重定向到mepc的内容，回到44继续执行
+
+
+
+### l_access_fault
+
+![image-20241020205855587](img/lab2_report/image-20241020205855587.png)
+
+完全同理，4C的时候进入中断，然后出来的时候定位到50
+
+
+
+### s_access_fault
+
+![image-20241020210140254](img/lab2_report/image-20241020210140254.png)
+
+
+
+同上，不做赘述
+
+
+
+### 线上测试
+
+![image-20241020210256661](img/lab2_report/image-20241020210256661.png)
+
+
 
 
 ## 4. 讨论与心得
 
-这次实验帮我很好的回顾了上学期计组里面学习的流水线cpu的知识，之前还有一些不是很懂，自己写的框架逻辑也不是非常的清晰，在理解上有阻碍。这次助教哥哥提供的框架思路非常清晰，并且ppt上有整一个连线图，能够让我更好的理解流水线cpu的工作原理、各种信号的传递，我对数据竞争时发生的stall与flush，控制竞争时发生的predict not taken与flush有了更好的理解，现在明白了只有load-use会触发stall，这个stall要阻止pc取值、阻止IF/ID寄存器写，并且还要清空ID/EX里的错误信息，而predict not taken只需要flush掉IF/ID里面刚刚取进来的错误的指令即可，另外，这个流水线的结构也有优化，把Hazard Detection和Branch Compare都放在了ID阶段，可以有效减小stall，另外，对reg也做了double bump处理
-
-ps：个人觉得Hazard Detection模块的信号线可以再写的分开一些，之前ppt上那三种加上load-store的分开写，这样或许可以更方便理解。还有haza_optype_EX这种，其实就是alu load store这三种，一开始还没大理解，后来想了挺久才恍然大悟
-
-总之这是一次很棒的实验体验，温故而知新，希望这学期在姜老师的体系结构这门课上会有更多的收获！！
+通过这次实验，对riscv中的中断与异常处理有了更好的理解。上学期只是做了scpu的中断，这学期将其加到五级流水线上，实现了知识的融汇贯通。非常感谢助教哥哥详细而清晰的代码框架，让我受益颇多！

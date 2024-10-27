@@ -21,7 +21,7 @@ E:/Arch/Lab2/Code/common/REG32.v,1727089634,verilog,,E:/Arch/Lab2/Code/core/REG_
 E:/Arch/Lab2/Code/common/add_32.v,1727089634,verilog,,E:/Arch/Lab2/Code/common/cmp_32.v,,add_32,,,../../../../Code/auxillary,,,,,
 E:/Arch/Lab2/Code/common/cmp_32.v,1727089634,verilog,,E:/Arch/Lab2/Code/auxillary/debug_clk.v,,cmp_32,,,../../../../Code/auxillary,,,,,
 E:/Arch/Lab2/Code/core/ALU.v,1727089634,verilog,,E:/Arch/Lab2/Code/auxillary/CPUTEST.v,,ALU,,,../../../../Code/auxillary,,,,,
-E:/Arch/Lab2/Code/core/CSRRegs.v,1728882035,verilog,,E:/Arch/Lab2/Code/core/CtrlUnit.v,,CSRRegs,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab2/Code/core/CSRRegs.v,1729420113,verilog,,E:/Arch/Lab2/Code/core/CtrlUnit.v,,CSRRegs,,,../../../../Code/auxillary,,,,,
 E:/Arch/Lab2/Code/core/CtrlUnit.v,1728882035,verilog,,E:/Arch/Lab2/Code/core/ExceptionUnit.v,,CtrlUnit,,,../../../../Code/auxillary,,,,,
 E:/Arch/Lab2/Code/core/ExceptionUnit.v,1728884116,verilog,,E:/Arch/Lab2/Code/core/HazardDetectionUnit.v,,ExceptionUnit,,,../../../../Code/auxillary,,,,,
 E:/Arch/Lab2/Code/core/HazardDetectionUnit.v,1727089634,verilog,,E:/Arch/Lab2/Code/core/ImmGen.v,,HazardDetectionUnit,,,../../../../Code/auxillary,,,,,
