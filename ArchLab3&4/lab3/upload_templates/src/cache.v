@@ -55,7 +55,7 @@ module cache (
     wire [ELEMENT_INDEX_WIDTH+ELEMENT_WORDS_WIDTH-1:0] addr_word2; // element index + word index
 
     assign addr_tag = addr[ADDR_BITS-1:ADDR_BITS-TAG_BITS];  //输入
-    assign addr_index = addr[ADDR_BITS - TAG_BITS - 1:ADDR_BITS - TAG_BITS - SET_INDEX_WIDTH]   //TO_BE_FILLED;
+    assign addr_index = addr[ADDR_BITS - TAG_BITS - 1:ADDR_BITS - TAG_BITS - SET_INDEX_WIDTH];   //TO_BE_FILLED;
     assign addr_word = addr[ELEMENT_WORDS_WIDTH + WORD_BYTES_WIDTH - 1:WORD_BYTES_WIDTH];   //TO_BE_FILLED;
 
     assign addr_element1 = {addr_index, 1'b0};
@@ -162,7 +162,7 @@ module cache (
                 // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED; 
 
                 inner_valid[addr_element2] <= 1'b1;
-                inner_dirty[addr_element2] <= 1'b1;
+                inner_dirty[addr_element2] <= 1'b0;
                 inner_tag[addr_element2] <= addr_tag;
                 inner_recent[addr_element1] <= 1'b0;
                 inner_recent[addr_element2] <= 1'b1;         
@@ -175,7 +175,7 @@ module cache (
                 // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED; 
 
                 inner_valid[addr_element1] <= 1'b1;
-                inner_dirty[addr_element1] <= 1'b1;
+                inner_dirty[addr_element1] <= 1'b0;
                 inner_tag[addr_element1] <= addr_tag;
                 inner_recent[addr_element1] <= 1'b1;
                 inner_recent[addr_element2] <= 1'b0;       

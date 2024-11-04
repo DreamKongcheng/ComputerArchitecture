@@ -145,7 +145,7 @@ module cmu (
                 cache_din = data_w;
             end
             S_BACK: begin
-                cache_addr = {addr_rw[ADDR_BITS-1:BLOCK_WIDTH], word_count, {WORD_BYTES_WIDTHH{1'b0}}}; //TO_BE_FILLED;
+                cache_addr = {addr_rw[ADDR_BITS-1:BLOCK_WIDTH], word_count, {WORD_BYTES_WIDTH{1'b0}}}; //TO_BE_FILLED;
                 cache_load = 1'b0;
                 cache_store = 1'b0;
                 cache_replace = 1'b0;

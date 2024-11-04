@@ -162,7 +162,7 @@ if (replace) begin
     if (hit2 | ((~hit1) & recent1)) begin
         inner_data[addr_word2] <= din; //替换2
         inner_valid[addr_element2] <= 1'b1;
-        inner_dirty[addr_element2] <= 1'b1;
+        inner_dirty[addr_element2] <= 1'b0;
         inner_tag[addr_element2] <= addr_tag;
         inner_recent[addr_element1] <= 1'b0;
         inner_recent[addr_element2] <= 1'b1;         
@@ -175,7 +175,7 @@ if (replace) begin
         // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED; 
 
         inner_valid[addr_element1] <= 1'b1;
-        inner_dirty[addr_element1] <= 1'b1;
+        inner_dirty[addr_element1] <= 1'b0;
         inner_tag[addr_element1] <= addr_tag;
         inner_recent[addr_element1] <= 1'b1;
         inner_recent[addr_element2] <= 1'b0;       
