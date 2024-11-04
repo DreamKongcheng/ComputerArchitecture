@@ -28,12 +28,12 @@ module cache (
     wire recent1, recent2, valid1, valid2, dirty1, dirty2;
     wire [TAG_BITS-1:0] tag1, tag2;
     wire hit1, hit2;
-    reg [ELEMENT_NUM-1:0] inner_recent = 0;
+    reg [ELEMENT_NUM-1:0] inner_recent = 0; //64
     reg [ELEMENT_NUM-1:0] inner_valid = 0;
     reg [ELEMENT_NUM-1:0] inner_dirty = 0;
     reg [TAG_BITS-1:0] inner_tag [0:ELEMENT_NUM-1];
     // 64 elements, 2 ways set associative => 32 sets
-    reg [31:0] inner_data [0:ELEMENT_NUM*ELEMENT_WORDS-1];
+    reg [31:0] inner_data [0:ELEMENT_NUM*ELEMENT_WORDS-1]; //64*4
 
     // initialize tag and data with 0
     integer i;
@@ -49,18 +49,18 @@ module cache (
     wire [TAG_BITS-1:0] addr_tag;
     wire [SET_INDEX_WIDTH-1:0] addr_index;     // idx of set
     wire [ELEMENT_WORDS_WIDTH+WORD_BYTES_WIDTH-WORD_BYTES_WIDTH-1:0] addr_word;
-    wire [ELEMENT_INDEX_WIDTH-1:0] addr_element1; 
+    wire [ELEMENT_INDEX_WIDTH-1:0] addr_element1;  //6
     wire [ELEMENT_INDEX_WIDTH-1:0] addr_element2;     // idx of element
-    wire [ELEMENT_INDEX_WIDTH+ELEMENT_WORDS_WIDTH-1:0] addr_word1;
+    wire [ELEMENT_INDEX_WIDTH+ELEMENT_WORDS_WIDTH-1:0] addr_word1; //4
     wire [ELEMENT_INDEX_WIDTH+ELEMENT_WORDS_WIDTH-1:0] addr_word2; // element index + word index
 
-    assign addr_tag = addr[ADDR_BITS-1:ADDR_BITS-TAG_BITS];
-    assign addr_index = TO_BE_FILLED;
-    assign addr_word = TO_BE_FILLED;
+    assign addr_tag = addr[ADDR_BITS-1:ADDR_BITS-TAG_BITS];  //输入
+    assign addr_index = addr[ADDR_BITS - TAG_BITS - 1:ADDR_BITS - TAG_BITS - SET_INDEX_WIDTH]   //TO_BE_FILLED;
+    assign addr_word = addr[ELEMENT_WORDS_WIDTH + WORD_BYTES_WIDTH - 1:WORD_BYTES_WIDTH];   //TO_BE_FILLED;
 
     assign addr_element1 = {addr_index, 1'b0};
-    assign addr_element2 = {addr_index, 1'b1};      
-    assign addr_word1 = {addr_element1, addr_word};
+    assign addr_element2 = {addr_index, 1'b1};       //选哪一个块，即哪一个way
+    assign addr_word1 = {addr_element1, addr_word};  //选具体的word
     assign addr_word2 = {addr_element2, addr_word};           
 
     assign word1 = inner_data[addr_word1];
@@ -86,9 +86,9 @@ module cache (
     assign hit2 = valid2 & (tag2 == addr_tag) ;     
 
     always @ (*) begin
-        valid <= TO_BE_FILLED; // if both not hit, set to the recent value
-        dirty <= TO_BE_FILLED; // if both not hit, set to the recent value
-        tag <= TO_BE_FILLED; // if both not hit, set to the recent value
+        valid <= recent1 ? valid2 : valid1; //TO_BE_FILLED; // if both not hit, set to the recent value
+        dirty <= recent1 ? dirty2 : dirty1;  //TO_BE_FILLED; // if both not hit, set to the recent value
+        tag <= recent1 ? tag2 : tag1;     //TO_BE_FILLED; // if both not hit, set to the recent value
         hit <= hit1 | hit2;
         if (load & hit1) begin
             dout <= u_b_h_w[1] ? word1 :
@@ -100,59 +100,85 @@ module cache (
             u_b_h_w[0] ? {u_b_h_w[2] ? 16'b0 : {16{half_word2[15]}}, half_word2} :
             {u_b_h_w[2] ? 24'b0 : {24{byte1[7]}}, byte2};
         end
-        else begin
-            dout <= recent1 ? word2 : word1;
+        else begin //read miss
+            dout <= recent1 ? word2 : word1;  //如果第一路是最新用的，就把第二路的丢出去
         end
     end
 
     always @ (posedge clk) begin
-        if (load) begin
+        if (load) begin  //read
             if (hit1) begin
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+
+                inner_recent[addr_element1] <= 1'b1;
+                inner_recent[addr_element2] <= 1'b0;
             end
             else if (hit2) begin
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;  
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+
+                inner_recent[addr_element1] <= 1'b0;
+                inner_recent[addr_element2] <= 1'b1;  
             end
         end
 
-        if (store) begin
+        if (store) begin  //write
             if (hit1) begin
                 inner_data[addr_word1] <= u_b_h_w[1] ? din
                     : u_b_h_w[0] ? addr[1] ? {din[15:0], word1[15:0]} : {word1[31:16], din[15:0]} 
                         :addr[1] ? addr[0] ? {din[7:0], word1[23:0]} : {word1[31:24], din[7:0], word1[15:0]}
                             :addr[0] ? {word1[31:16], din[7:0], word1[7:0]} : {word1[31:8], din[7:0]};
-                inner_dirty[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_dirty[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+
+                inner_dirty[addr_element1] <= 1'b1;
+                inner_recent[addr_element1] <= 1'b1;
+                inner_recent[addr_element2] <= 1'b0;
             end
             else if (hit2) begin
                 inner_data[addr_word2] <= u_b_h_w[1] ? din
                     :u_b_h_w[0] ? addr[1] ? {din[15:0], word2[15:0]} : {word2[31:16], din[15:0]} 
                         :addr[1] ? addr[0] ? {din[7:0], word2[23:0]} : {word2[31:24], din[7:0], word2[15:0]}
                             :addr[0] ? {word2[31:16], din[7:0], word2[7:0]} : {word2[31:8], din[7:0]};
-                inner_dirty[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_dirty[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+
+                inner_dirty[addr_element2] <= 1'b1;
+                inner_recent[addr_element1] <= 1'b0;
+                inner_recent[addr_element2] <= 1'b1;
             end
         end
 
         if (replace) begin
             if (hit2 | ((~hit1) & recent1)) begin
-                inner_data[addr_word2] <= din;
-                inner_valid[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_dirty[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_tag[TO_BE_FILLED] <= addr_tag;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;         
+                inner_data[addr_word2] <= din; //替换2
+                // inner_valid[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_dirty[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_tag[TO_BE_FILLED] <= addr_tag;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED; 
+
+                inner_valid[addr_element2] <= 1'b1;
+                inner_dirty[addr_element2] <= 1'b1;
+                inner_tag[addr_element2] <= addr_tag;
+                inner_recent[addr_element1] <= 1'b0;
+                inner_recent[addr_element2] <= 1'b1;         
             end else begin
                 inner_data[addr_word1] <= din;
-                inner_valid[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_dirty[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_tag[TO_BE_FILLED] <= addr_tag;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
-                inner_recent[TO_BE_FILLED] <= TO_BE_FILLED; 
+                // inner_valid[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_dirty[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_tag[TO_BE_FILLED] <= addr_tag;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED;
+                // inner_recent[TO_BE_FILLED] <= TO_BE_FILLED; 
+
+                inner_valid[addr_element1] <= 1'b1;
+                inner_dirty[addr_element1] <= 1'b1;
+                inner_tag[addr_element1] <= addr_tag;
+                inner_recent[addr_element1] <= 1'b1;
+                inner_recent[addr_element2] <= 1'b0;       
             end
         end
 

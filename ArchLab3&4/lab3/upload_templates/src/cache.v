@@ -86,9 +86,9 @@ module cache (
     assign hit2 = valid2 & (tag2 == addr_tag) ;     
 
     always @ (*) begin
-        valid <= recent1 ? valid2 : valid1; //TO_BE_FILLED; // if both not hit, set to the recent value
-        dirty <= recent1 ? dirty2 : dirty1;  //TO_BE_FILLED; // if both not hit, set to the recent value
-        tag <= recent1 ? tag2 : tag1;     //TO_BE_FILLED; // if both not hit, set to the recent value
+        valid <= hit1 ? valid1 : hit2 ? valid2 : recent1 ? valid2 : valid1; //TO_BE_FILLED; // if both not hit, set to the recent value
+        dirty <= hit1 ? dirty1 : hit2 ? dirty2 : recent1 ? dirty2 : dirty1;  //TO_BE_FILLED; // if both not hit, set to the recent value
+        tag <= hit1 ? tag1 : hit2 ? tag2 : recent1 ? tag2 : tag1;     //TO_BE_FILLED; // if both not hit, set to the recent value
         hit <= hit1 | hit2;
         if (load & hit1) begin
             dout <= u_b_h_w[1] ? word1 :
