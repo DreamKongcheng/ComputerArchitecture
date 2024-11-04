@@ -12,10 +12,10 @@ module HazardDetectionUnit(
     output[1:0] forward_ctrl_A, forward_ctrl_B
 );
     reg TO_BE_FILLED = 0;
-    assign reg_FD_EN = TO_BE_FILLED;
-    assign reg_DE_EN = TO_BE_FILLED;
-    assign reg_EM_EN = TO_BE_FILLED;
-    assign reg_MW_EN = TO_BE_FILLED;
+    assign reg_FD_EN = ~cmu_stall; //TO_BE_FILLED;
+    assign reg_DE_EN = ~cmu_stall; //TO_BE_FILLED;
+    assign reg_EM_EN = ~cmu_stall; //TO_BE_FILLED;
+    assign reg_MW_EN = ~cmu_stall; //TO_BE_FILLED;
     assign reg_EM_flush = 0;
     assign reg_MW_flush = 0;
 
@@ -43,7 +43,7 @@ module HazardDetectionUnit(
 
     wire load_stall = rs1_forward_stall | rs2_forward_stall;
 
-    assign PC_EN_IF = TO_BE_FILLED;
+    assign PC_EN_IF = ~cmu_stall & (~load_stall); //TO_BE_FILLED;
     assign reg_FD_stall = load_stall;
     assign reg_FD_flush = Branch_ID;
     assign reg_DE_flush = load_stall;
