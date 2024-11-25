@@ -1,9 +1,8 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  --include "../../../../Code/auxillary" --include "../../../../Code/cache" \
 "../../../../Code/core/ALU.v" \
-"../../../../Code/auxillary/Code2Inst.v" \
+"../../../../Code/auxillary/CPUTEST.v" \
 "../../../../Code/core/CtrlUnit.v" \
-"../../../../Code/auxillary/Font816.v" \
 "../../../../Code/core/HazardDetectionUnit.v" \
 "../../../../Code/core/ImmGen.v" \
 "../../../../Code/common/MUX2T1_32.v" \
@@ -17,19 +16,12 @@ verilog xil_defaultlib  --include "../../../../Code/auxillary" --include "../../
 "../../../../Code/core/ROM_D.v" \
 "../../../../Code/core/RV32core.v" \
 "../../../../Code/core/Regs.v" \
-"../../../../Code/auxillary/VGATEST.v" \
 "../../../../Code/common/add_32.v" \
-"../../../../Code/auxillary/btn_scan.v" \
 "../../../../Code/cache/cache.v" \
-"../../../../Code/auxillary/clk_diff.v" \
 "../../../../Code/common/cmp_32.v" \
 "../../../../Code/cache/cmu.v" \
-"../../../../Code/auxillary/display.v" \
-"../../../../Code/core/fix.v" \
-"../../../../Code/auxillary/my_clk_gen.v" \
-"../../../../Code/auxillary/parallel2serial.v" \
-"../../../../Code/auxillary/vga.v" \
-"../../../../Code/auxillary/top.v" \
+"../../../../Code/auxillary/debug_clk.v" \
+"../../../../Lab3_4.srcs/sim_1/imports/simulation_sources/core_sim.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

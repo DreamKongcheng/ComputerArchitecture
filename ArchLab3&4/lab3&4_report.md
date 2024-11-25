@@ -321,3 +321,12 @@ assign stall = next_state != S_IDLE; //TO_BE_FILLED;
 ```
 只要下一个阶段不是IDLE说明还在mem和cache之间沟通数据，应该停下来等他们
 
+## 3. 实验过程和数据记录以及结果分析
+![](assets/lab3&4_report/20241111220522.png)
+
+![](assets/lab3&4_report/20241111220533.png)
+
+
+
+## 4. 实验心得
+这次实验帮助我回顾了之前计组学习的cache替换策略，把cache集成到流水线cpu中去，我更好的理解了其工作原理。助教哥哥的代码框架非常清晰易懂，这次实验收获很大！

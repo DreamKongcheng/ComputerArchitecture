@@ -1,24 +1,16 @@
 Vivado Simulator v2022.2
 Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
-Running: D:/vivado2022_2/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_behav xil_defaultlib.top xil_defaultlib.glbl -log elaborate.log 
+Running: D:/vivado2022_2/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot core_sim_behav xil_defaultlib.core_sim xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-3091] actual bit length 10 differs from formal bit length 7 for port 'a' [E:/Arch/Lab3_4/Code/core/RV32core.v:72]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 2 for port 'PCSource' [E:/Arch/Lab3_4/Code/core/RV32core.v:194]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 2 for port 'DatatoReg' [E:/Arch/Lab3_4/Code/core/RV32core.v:208]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling module unisims_ver.IBUFDS
-Compiling module unisims_ver.IBUFGDS
-Compiling module xil_defaultlib.clk_diff
-Compiling module unisims_ver.MMCME2_ADV(CLKIN1_PERIOD=5.0,CLK...
-Compiling module unisims_ver.BUFG
-Compiling module xil_defaultlib.my_clk_gen
-Compiling module xil_defaultlib.btn_scan(CLK_FREQ=25)
-Compiling module xil_defaultlib.parallel2serial(P_CLK_FREQ=25,S_...
-Compiling module xil_defaultlib.parallel2serial(P_CLK_FREQ=25,S_...
-Compiling module xil_defaultlib.display_default
 Compiling module xil_defaultlib.debug_clk
 Compiling module xil_defaultlib.REG32
 Compiling module xil_defaultlib.add_32
@@ -38,14 +30,8 @@ Compiling module xil_defaultlib.cache_default
 Compiling module xil_defaultlib.cmu_default
 Compiling module xil_defaultlib.data_ram
 Compiling module xil_defaultlib.REG_MEM_WB
+Compiling module xil_defaultlib.CPUTEST
 Compiling module xil_defaultlib.RV32core
-Compiling module xil_defaultlib.Code2Inst
-Compiling module unisims_ver.RB18_INTERNAL_VLOG(READ_WIDTH_A=...
-Compiling module unisims_ver.RAMB18E1(INIT_00=256'b0111111010...
-Compiling module unisims_ver.RAMB16_S1(INIT_00=256'b011111101...
-Compiling module xil_defaultlib.FONT8_16
-Compiling module xil_defaultlib.vga
-Compiling module xil_defaultlib.VGA_TESTP
-Compiling module xil_defaultlib.top
+Compiling module xil_defaultlib.core_sim
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot top_behav
+Built simulation snapshot core_sim_behav
