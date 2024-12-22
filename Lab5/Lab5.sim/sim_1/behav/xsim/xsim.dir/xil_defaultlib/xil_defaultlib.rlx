@@ -1,0 +1,26 @@
+0.7
+2020.2
+Oct 14 2022
+05:20:55
+E:/Arch/Lab5/Code/auxillary/debug_clk.v,1732513863,verilog,,E:/Arch/Lab5/Lab5.srcs/sim_1/imports/simulation_sources/core_sim.v,,debug_clk,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/common/MUX2T1_32.v,1732509649,verilog,,E:/Arch/Lab5/Code/common/MUX8T1_32.v,,MUX2T1_32,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/common/MUX8T1_32.v,1732509649,verilog,,E:/Arch/Lab5/Code/core/RAM_B.v,,MUX8T1_32,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/common/REG32.v,1732509649,verilog,,E:/Arch/Lab5/Code/core/REG_ID.v,,REG32,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/common/add_32.v,1732509649,verilog,,E:/Arch/Lab5/Code/common/cmp_32.v,,add_32,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/common/cmp_32.v,1732509649,verilog,,E:/Arch/Lab5/Code/auxillary/debug_clk.v,,cmp_32,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/CtrlUnit.v,1732513468,verilog,,E:/Arch/Lab5/Code/core/FU_ALU.v,,CtrlUnit,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/FU_ALU.v,1732509649,verilog,,E:/Arch/Lab5/Code/core/FU_div.v,,FU_ALU,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/FU_div.v,1732509649,verilog,,E:/Arch/Lab5/Code/core/FU_jump.v,,FU_div,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/FU_jump.v,1732509649,verilog,,E:/Arch/Lab5/Code/core/FU_mem.v,,FU_jump,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/FU_mem.v,1732509649,verilog,,E:/Arch/Lab5/Code/core/FU_mul.v,,FU_mem,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/FU_mul.v,1732509649,verilog,,E:/Arch/Lab5/Code/core/ImmGen.v,,FU_mul,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/ImmGen.v,1732509649,verilog,,E:/Arch/Lab5/Code/common/MUX2T1_32.v,,ImmGen,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/RAM_B.v,1732516541,verilog,,E:/Arch/Lab5/Code/common/REG32.v,,RAM_B,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/REG_ID.v,1732509649,verilog,,E:/Arch/Lab5/Code/core/ROM_D.v,,REG_ID,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/ROM_D.v,1732516531,verilog,,E:/Arch/Lab5/Code/core/RV32core.v,,ROM_D,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/RV32core.v,1732517037,verilog,,E:/Arch/Lab5/Code/core/Regs.v,,RV32core,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Code/core/Regs.v,1732509649,verilog,,E:/Arch/Lab5/Code/common/add_32.v,,Regs,,,../../../../Code/auxillary,,,,,
+E:/Arch/Lab5/Lab5.gen/sources_1/ip/divider/sim/divider.vhd,1732515170,vhdl,,,,divider,,,,,,,,
+E:/Arch/Lab5/Lab5.gen/sources_1/ip/multiplier/sim/multiplier.vhd,1732515078,vhdl,,,,multiplier,,,,,,,,
+E:/Arch/Lab5/Lab5.sim/sim_1/behav/xsim/glbl.v,1665704903,verilog,,,,glbl,,,,,,,,
+E:/Arch/Lab5/Lab5.srcs/sim_1/imports/simulation_sources/core_sim.v,1732509649,verilog,,,,core_sim,,,../../../../Code/auxillary,,,,,

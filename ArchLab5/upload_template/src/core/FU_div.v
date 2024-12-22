@@ -19,8 +19,8 @@ module FU_div(
 
     always@(posedge clk) begin
         if(EN & ~state) begin
-            A_reg <= TO_BE_FILLED;
-            B_reg <= TO_BE_FILLED;
+            A_reg <= A; //TO_BE_FILLED;
+            B_reg <= B; //TO_BE_FILLED;
             A_valid <= 1;
             B_valid <= 1;
             state <= 1;
@@ -42,6 +42,6 @@ module FU_div(
         .m_axis_dout_tdata(divres)
     );
 
-    assign res = divres[TO_BE_FILLED:TO_BE_FILLED];
+    assign res = divres[63:32]; //divres[TO_BE_FILLED:TO_BE_FILLED];
 
 endmodule

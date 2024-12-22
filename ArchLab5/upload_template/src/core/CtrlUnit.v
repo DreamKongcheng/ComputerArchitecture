@@ -1,3 +1,4 @@
+
 `timescale 1ns / 1ps
 
 module CtrlUnit(
@@ -30,17 +31,7 @@ module CtrlUnit(
     output reg reg_write
 );
     reg TO_BE_FILLED = 0;
-    always  @(posedge clk or posedge rst) begin
-        if(rst) begin
-            reg_write <= 0;
-            rd_ctrl <= 0;
-            write_sel <= 0;
-        end else begin
-            reg_write <= FU_writeback_en[reservation_reg[0]];
-            rd_ctrl <= FU_write_to[reservation_reg[0]];
-            write_sel <= reservation_reg[0];
-        end
-    end
+
 
     // instruction field
     wire[6:0] funct7 = inst[31:25];
@@ -145,20 +136,51 @@ module CtrlUnit(
                         {3{use_DIV}}  & 3'd4 |
                         {3{use_JUMP}} & 3'd5 ;
 
-    reg B_in_FU, J_in_FU;
-    reg[5:0] FU_status;
-    reg[2:0] reservation_reg [0:31];
-    reg[4:0] FU_write_to [5:0];
-    reg[5:0] FU_writeback_en;
-    reg[4:0] FU_delay_cycles [5:0];
+    reg B_in_FU, J_in_FU; // branch and jump
+    reg[5:0] FU_status; // flag for each FU, 1 is busy, 0 is free.
+    reg[2:0] reservation_reg [0:31]; // please refer to implementation notes
+    reg[4:0] FU_write_to [5:0]; // the destination register of the FU
+    reg[5:0] FU_writeback_en; // enable FU to write back when there is no hazard 
+    reg[4:0] FU_delay_cycles [5:0]; // record the FU's delay cycles
     reg reg_ID_flush_next;
     integer i;
+
+    reg[4:0] latency [0:31];
+
+    always @(*) begin
+        for (i = 31; i >= 0; i = i - 1) begin
+            if (reservation_reg[i] != 3'd0) begin
+                latency[reservation_reg[i]] = i;
+            end else begin
+                latency[reservation_reg[i]] = 5'd0; // 如果没有延迟，设置为0
+            end
+        end
+    end
     
-    wire WAW = TO_BE_FILLED; //这里判断预约寄存器的代码可能非常长
-    wire RAW_rs1 = TO_BE_FILLED;
-    wire RAW_rs2 = TO_BE_FILLED;
-    wire WB_structure_hazard = TO_BE_FILLED;
-    wire FU_structure_hazard = TO_BE_FILLED;
+    // wire WAW = TO_BE_FILLED; //这里判断预约寄存器的代码可能非常长
+    // please refer to implementation notes
+    wire WAW = (FU_status[1] & rd != 5'b0 & rd_used & rd == FU_write_to[1] & FU_delay_cycles[use_FU] < latency[1])|
+               (FU_status[2] & rd != 5'b0 & rd_used & rd == FU_write_to[2] & FU_delay_cycles[use_FU] < latency[2])|
+               (FU_status[3] & rd != 5'b0 & rd_used & rd == FU_write_to[3] & FU_delay_cycles[use_FU] < latency[3])|
+               (FU_status[4] & rd != 5'b0 & rd_used & rd == FU_write_to[4] & FU_delay_cycles[use_FU] < latency[4])|
+               (FU_status[5] & rd != 5'b0 & rd_used & rd == FU_write_to[5] & FU_delay_cycles[use_FU] < latency[5]);
+
+    // please refer to implementation notes
+    wire RAW_rs1 = (FU_status[1] & rs1 != 5'b0 & rs1 == FU_write_to[1])| 
+                   (FU_status[2] & rs1 != 5'b0 & rs1 == FU_write_to[2])|
+                   (FU_status[3] & rs1 != 5'b0 & rs1 == FU_write_to[3])|
+                   (FU_status[4] & rs1 != 5'b0 & rs1 == FU_write_to[4])|
+                   (FU_status[5] & rs1 != 5'b0 & rs1 == FU_write_to[5]);
+    
+    // please refer to implementation notes
+    wire RAW_rs2 = (FU_status[1] & rs2 != 5'b0 & rs2 == FU_write_to[1])|
+                   (FU_status[2] & rs2 != 5'b0 & rs2 == FU_write_to[2])|
+                   (FU_status[3] & rs2 != 5'b0 & rs2 == FU_write_to[3])|
+                   (FU_status[4] & rs2 != 5'b0 & rs2 == FU_write_to[4])|
+                   (FU_status[5] & rs2 != 5'b0 & rs2 == FU_write_to[5]);
+
+    wire WB_structure_hazard = |reservation_reg[(FU_delay_cycles[use_FU])];
+    wire FU_structure_hazard = FU_status[use_FU] & (reservation_reg[0]!=use_FU);
     wire FU_hazard = WAW|RAW_rs1|RAW_rs2|WB_structure_hazard|FU_structure_hazard;
 
     initial begin
@@ -193,32 +215,42 @@ module CtrlUnit(
             FU_delay_cycles[3] <= 5'd7;         // MUL cycles
             FU_delay_cycles[4] <= 5'd24;        // DIV cycles
             FU_delay_cycles[5] <= 5'd2;         // JUMP cycles
+            //wire output
+            reg_write <= 0;
+            rd_ctrl <= 0;
+            write_sel <= 0;
         end
-        else begin
-            if (reservation_reg[0] != 0) begin  // FU写回将在这周期完成，这里需要联系39行
-                FU_writeback_en[TO_BE_FILLED] <= TO_BE_FILLED;
-                FU_status[TO_BE_FILLED] <= TO_BE_FILLED;
-                FU_write_to[TO_BE_FILLED] <= TO_BE_FILLED;
+        else begin // some FU finishes it's computation here, write the result back
+            reg_write <= FU_writeback_en[reservation_reg[0]];
+            rd_ctrl <= FU_write_to[reservation_reg[0]];
+            write_sel <= reservation_reg[0];
+            if (reservation_reg[0] != 0) begin  // FU写回将在这周期完成，这里需要联系39行，代表不占用了，已经完成了LU单元的操作，该周期是写回
+                FU_writeback_en[reservation_reg[0]] <= 1'b0; // free the corresponding FU write back signal
+                FU_status[reservation_reg[0]] <= 1'b0; // free the corresponding FU
+                FU_write_to[reservation_reg[0]] <= 5'b0; // free the corresponding FU
             end
-            if (use_FU == 0 | reg_ID_flush_next) begin
-                TO_BE_FILLED <= 0; //这里需要编写多行代码，完成reservation_reg的移位操作，第2位移到第1位，第3位移到第2位，以此类推。最后一位清零。推荐尝试for循环（当然手写三十多行赋值也可以）。
-                B_in_FU <= 0;
-                J_in_FU <= 0;
+            if (use_FU == 3'b0 | reg_ID_flush_next | FU_hazard  | reg_ID_flush) begin
+                for (i=0; i<31; i=i+1)
+                    reservation_reg[i] <= reservation_reg[i+1];
+                reservation_reg[31] <= 32'b0;
+                // TO_BE_FILLED = 0; //这里需要编写多行代码，完成reservation_reg的移位操作，第2位移到第1位，第3位移到第2位，以此类推。最后一位清零。推荐尝试for循环（当然手写三十多行赋值也可以）。
+                B_in_FU = 0;
+                J_in_FU = 0;
+                // TO_BE_FILLED = ~TO_BE_FILLED;
             end
-            else if (FU_hazard  | reg_ID_flush) begin
-                TO_BE_FILLED <= 0; //这里需要编写多行代码，完成reservation_reg的移位操作，第2位移到第1位，第3位移到第2位，以此类推。最后一位清零。推荐尝试for循环（当然手写三十多行赋值也可以）。
-                B_in_FU <= 0;
-                J_in_FU <= 0;
-                end
-            else if(valid_ID) begin  // regist FU operation
-                TO_BE_FILLED <= 0; //这里需要编写多行代码，完成reservation_reg的移位操作，第2位移到第1位，第3位移到第2位，以此类推。最后一位清零。推荐尝试for循环（当然手写三十多行赋值也可以）。
-                FU_status[TO_BE_FILLED] <= TO_BE_FILLED;
+            else if(valid_ID) begin  // register FU operation
+                for (i=0; i<31; i=i+1)
+                    reservation_reg[i] <= reservation_reg[i+1];
+                reservation_reg[31] <= 32'b0;
+                // TO_BE_FILLED = 0; //这里需要编写多行代码，完成reservation_reg的移位操作，第2位移到第1位，第3位移到第2位，以此类推。最后一位清零。推荐尝试for循环（当然手写三十多行赋值也可以）。
+                FU_status[use_FU] <= 1'b1; // set the corresponding FU busy
+                reservation_reg[FU_delay_cycles[use_FU]-1] <= use_FU; // reserve the register for the next cycle
                 if(rd_used)begin
-                    FU_write_to[TO_BE_FILLED] <= TO_BE_FILLED;
-                    FU_writeback_en[TO_BE_FILLED] <= TO_BE_FILLED;
+                    FU_write_to[use_FU] <= rd;
+                    FU_writeback_en[use_FU] <= 1'b1;
                 end
-                B_in_FU <= B_valid;
-                J_in_FU <= JAL | JALR;
+                B_in_FU = B_valid;
+                J_in_FU = JAL | JALR;
             end
         end
     end

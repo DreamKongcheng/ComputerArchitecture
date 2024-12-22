@@ -1,0 +1,125 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Mon Nov 25 15:04:57 2024
+| Host         : YangZhengyu-Portable running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7k325t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    47 |
+|    Minimum number of control sets                        |    47 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   105 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    47 |
+| >= 0 to < 4        |     4 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     8 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    28 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |            2726 |          639 |
+| No           | No                    | Yes                    |              14 |            6 |
+| No           | Yes                   | No                     |              35 |           10 |
+| Yes          | No                    | No                     |             586 |          176 |
+| Yes          | No                    | Yes                    |            1160 |          444 |
+| Yes          | Yes                   | No                     |              78 |           41 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++--------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
+|             Clock Signal             |                                       Enable Signal                                      |           Set/Reset Signal          | Slice Load Count | Bel Load Count | Bels / Slice |
++--------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
+|  core/ctrl/latency_reg[5][0]_i_2_n_0 |                                                                                          |                                     |                1 |              1 |         1.00 |
+|  core/ctrl/latency_reg[2][0]_i_2_n_0 |                                                                                          |                                     |                1 |              1 |         1.00 |
+|  core/ctrl/latency_reg[1][0]_i_2_n_0 |                                                                                          |                                     |                1 |              1 |         1.00 |
+|  core/ctrl/latency_reg[3][2]_i_2_n_0 |                                                                                          |                                     |                1 |              3 |         3.00 |
+|  CLK_GEN/CLK_OUT3                    | DISPLAY/P2S_LED/next_data_count                                                          | rst_all                             |                1 |              4 |         4.00 |
+|  debug_clk                           | core/reg_ID/FU_ALU_EN                                                                    | core/reg_ID/IR_ID_reg[2]_1          |                1 |              4 |         4.00 |
+|  core/ctrl/latency_reg[4][4]_i_2_n_0 |                                                                                          |                                     |                2 |              5 |         2.50 |
+|  CLK_GEN/CLK_OUT3                    | BTN_SCAN/p_0_in                                                                          |                                     |                1 |              5 |         5.00 |
+|  CLK_GEN/CLK_OUT3                    | DISPLAY/P2S_SEG/next_data_count                                                          | rst_all                             |                2 |              6 |         3.00 |
+|  debug_clk                           | core/reg_ID/valid_reg_8[0]                                                               | rst_all                             |                3 |              6 |         2.00 |
+|  debug_clk                           | core/reg_ID/valid_reg_10[0]                                                              | rst_all                             |                3 |              6 |         2.00 |
+|  debug_clk                           | core/ctrl/FU_write_to[1][4]_i_1_n_0                                                      | rst_all                             |                4 |              6 |         1.50 |
+|  debug_clk                           | core/ctrl/FU_write_to[4][4]_i_1_n_0                                                      | rst_all                             |                2 |              6 |         3.00 |
+|  CLK_GEN/CLK_OUT3                    | DISPLAY/P2S_LED/buff[15]_i_1__0_n_0                                                      | DISPLAY/P2S_LED/buff[16]_i_1__0_n_0 |                1 |              7 |         7.00 |
+|  debug_clk                           |                                                                                          | core/mu/state[6]_i_1_n_0            |                1 |              7 |         7.00 |
+|  debug_clk                           | core/ctrl/FU_status[3]_i_1_n_0                                                           | rst_all                             |                4 |              7 |         1.75 |
+|  CLK_GEN/CLK_OUT3                    | DISPLAY/P2S_SEG/buff[64]_i_1_n_0                                                         | DISPLAY/P2S_SEG/buff[63]_i_1_n_0    |                4 |              8 |         2.00 |
+|  CLK_GEN/CLK_OUT3                    | DISPLAY/P2S_LED/buff[15]_i_1__0_n_0                                                      |                                     |                3 |             10 |         3.33 |
+|  debug_clk                           |                                                                                          | rst_all                             |                6 |             14 |         2.33 |
+|  CLK_GEN/CLK_OUT4                    |                                                                                          |                                     |                4 |             17 |         4.25 |
+|  debug_clk                           | core/reg_ID/state_reg_0                                                                  | core/reg_ID/state_reg               |                7 |             17 |         2.43 |
+|  CLK_GEN/CLK_OUT3                    |                                                                                          |                                     |                9 |             22 |         2.44 |
+|  CLK_GEN/CLK_OUT3                    |                                                                                          | rst_all                             |                9 |             28 |         3.11 |
+|  debug_clk                           | core/du/div/U0/i_synth/i_has_input_skid.i_2to1/gen_has_z_tready.reg1_b_tdata[31]_i_1_n_0 |                                     |                7 |             32 |         4.57 |
+|  debug_clk                           | core/reg_ID/p_0_in__0                                                                    | core/mem/ram/state_reg[0]_0         |               25 |             32 |         1.28 |
+|  debug_clk                           | core/du/div/U0/i_synth/i_has_input_skid.i_2to1/p_4_in                                    |                                     |                7 |             32 |         4.57 |
+|  debug_clk                           | core/du/div/U0/i_synth/i_has_input_skid.i_2to1/gen_has_z_tready.reg1_a_tdata[31]_i_1_n_0 |                                     |                8 |             32 |         4.00 |
+|  debug_clk                           | core/du/div/U0/i_synth/i_has_input_skid.i_2to1/p_12_in                                   |                                     |                5 |             32 |         6.40 |
+|  debug_clk                           | core/ctrl/J_in_FU_reg_3[0]                                                               | rst_all                             |                6 |             32 |         5.33 |
+|  debug_clk                           | core/reg_ID/valid_reg_3[0]                                                               | rst_all                             |               10 |             33 |         3.30 |
+|  CLK_GEN/CLK_OUT3                    | DISPLAY/P2S_SEG/buff[64]_i_1_n_0                                                         |                                     |               22 |             57 |         2.59 |
+|  debug_clk                           | core/reg_ID/FU_ALU_EN                                                                    |                                     |               21 |             64 |         3.05 |
+|  debug_clk                           | core/reg_ID/E[0]                                                                         |                                     |               22 |             64 |         2.91 |
+|  debug_clk                           | core/mu/state[6]_i_1_n_0                                                                 |                                     |               29 |             64 |         2.21 |
+|  debug_clk                           | core/ctrl/J_in_FU_reg_2                                                                  | rst_all                             |               23 |             72 |         3.13 |
+|  debug_clk                           | core/reg_ID/state_reg[0]                                                                 |                                     |               21 |             84 |         4.00 |
+|  debug_clk                           | core/reg_ID/state_reg_0                                                                  |                                     |               30 |            110 |         3.67 |
+|  debug_clk                           | core/mem/ram/data_reg_512_767_0_0_i_1_n_0                                                |                                     |               32 |            128 |         4.00 |
+|  debug_clk                           | core/mem/ram/data_reg_768_1023_0_0_i_1_n_0                                               |                                     |               32 |            128 |         4.00 |
+|  debug_clk                           | core/mem/ram/data_reg_0_255_0_0_i_1_n_0                                                  |                                     |               32 |            128 |         4.00 |
+|  debug_clk                           | core/mem/ram/data_reg_1024_1279_0_0_i_1_n_0                                              |                                     |               32 |            128 |         4.00 |
+|  debug_clk                           | core/mem/ram/data_reg_1280_1535_0_0_i_1_n_0                                              |                                     |               32 |            128 |         4.00 |
+|  debug_clk                           | core/mem/ram/data_reg_1792_2047_0_0_i_1_n_0                                              |                                     |               32 |            128 |         4.00 |
+|  debug_clk                           | core/mem/ram/data_reg_1536_1791_0_0_i_1_n_0                                              |                                     |               32 |            128 |         4.00 |
+|  debug_clk                           | core/mem/ram/data_reg_256_511_0_0_i_1_n_0                                                |                                     |               32 |            128 |         4.00 |
+| ~debug_clk                           | core/ctrl/rd_ctrl_reg[2]_0[0]                                                            | rst_all                             |              389 |            992 |         2.55 |
+|  debug_clk                           |                                                                                          |                                     |              620 |           2687 |         4.33 |
++--------------------------------------+------------------------------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
+
+

@@ -96,19 +96,31 @@ module  RV32core(
 
     // WB
     MUX8T1_32 mux_DtR(
-    .s(TO_BE_FILLED),
+    // .s(TO_BE_FILLED),
 
-    .I0(TO_BE_FILLED),
-    .I1(TO_BE_FILLED),
-    .I2(TO_BE_FILLED),
-    .I3(TO_BE_FILLED),
-    .I4(TO_BE_FILLED),
-    .I5(TO_BE_FILLED),
-    .I6(TO_BE_FILLED),
-    .I7(TO_BE_FILLED),
+    // .I0(TO_BE_FILLED),
+    // .I1(TO_BE_FILLED),
+    // .I2(TO_BE_FILLED),
+    // .I3(TO_BE_FILLED),
+    // .I4(TO_BE_FILLED),
+    // .I5(TO_BE_FILLED),
+    // .I6(TO_BE_FILLED),
+    // .I7(TO_BE_FILLED),
     
-    .o(TO_BE_FILLED));
+    // .o(TO_BE_FILLED));
 
+    .s(DatatoReg_ctrl),
+
+    .I0(32'h0000_0000),
+    .I1(ALUout_FU),
+    .I2(mem_data_FU),
+    .I3(mulres_FU),
+    .I4(divres_FU),
+    .I5(PC_wb_FU),
+    .I6(32'h0000_0000),
+    .I7(32'h0000_0000),
+    
+    .o(wt_data_WB));
 
     always @* begin
         case (debug_addr[4:0])

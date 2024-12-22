@@ -1,0 +1,38 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/CtrlUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CtrlUnit
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/FU_ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FU_ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/FU_div.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FU_div
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/FU_jump.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FU_jump
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/FU_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FU_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/FU_mul.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FU_mul
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/ImmGen.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ImmGen
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/common/MUX2T1_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MUX2T1_32
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/common/MUX8T1_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MUX8T1_32
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/RAM_B.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RAM_B
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/common/REG32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module REG32
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/REG_ID.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module REG_ID
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/ROM_D.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ROM_D
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/RV32core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RV32core
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/core/Regs.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Regs
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/common/add_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module add_32
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/common/cmp_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cmp_32
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Code/auxillary/debug_clk.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module debug_clk
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Arch/Lab5/Lab5.srcs/sim_1/imports/simulation_sources/core_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module core_sim

@@ -24,7 +24,7 @@ label0:		lui  x10,4	　
 			divu x13, x7, x2	     
 			mul x13, x4, x5	　		# WAW
 			mul x15, x13, x2	　	# FU hazard && RAW
-			2addi x16, x0, 4	    # WB quicklier
+			addi x16, x0, 4	    # WB quicklier
 			jalr x17,0(x0)	　
 			addi x0, x0, 0	　
 			addi x0, x0, 0	　

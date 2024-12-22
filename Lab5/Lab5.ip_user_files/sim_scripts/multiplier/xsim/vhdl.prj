@@ -1,0 +1,4 @@
+vhdl xil_defaultlib  \
+"../../../../Lab5.gen/sources_1/ip/multiplier/sim/multiplier.vhd" \
+
+nosort

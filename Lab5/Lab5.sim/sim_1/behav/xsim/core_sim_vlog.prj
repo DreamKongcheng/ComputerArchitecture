@@ -1,0 +1,27 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../Code/auxillary" \
+"../../../../Code/core/CtrlUnit.v" \
+"../../../../Code/core/FU_ALU.v" \
+"../../../../Code/core/FU_div.v" \
+"../../../../Code/core/FU_jump.v" \
+"../../../../Code/core/FU_mem.v" \
+"../../../../Code/core/FU_mul.v" \
+"../../../../Code/core/ImmGen.v" \
+"../../../../Code/common/MUX2T1_32.v" \
+"../../../../Code/common/MUX8T1_32.v" \
+"../../../../Code/core/RAM_B.v" \
+"../../../../Code/common/REG32.v" \
+"../../../../Code/core/REG_ID.v" \
+"../../../../Code/core/ROM_D.v" \
+"../../../../Code/core/RV32core.v" \
+"../../../../Code/core/Regs.v" \
+"../../../../Code/common/add_32.v" \
+"../../../../Code/common/cmp_32.v" \
+"../../../../Code/auxillary/debug_clk.v" \
+"../../../../Lab5.srcs/sim_1/imports/simulation_sources/core_sim.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
